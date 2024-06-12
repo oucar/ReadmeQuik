@@ -12,11 +12,11 @@ export function SideBarListCard({ name, id }: ISideBarListCardProps) {
   const setactiveBlocksAtom = useUpdateAtom(activeBlocksAtom);
   const setinActiveBlocksAtom = useUpdateAtom(inActiveBlocksAtom);
   const handleClick = () => {
-    setinActiveBlocksAtom((draft) => {
+    setinActiveBlocksAtom((draft: string[]) => {
       const filtered = draft.filter((value) => value !== id);
       return (draft = filtered);
     });
-    setactiveBlocksAtom((draft) => {
+    setactiveBlocksAtom((draft: string[]) => {
       const items = draft;
       items.push(id);
       return (draft = items);
