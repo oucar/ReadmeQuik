@@ -1,7 +1,7 @@
 import { IconButton } from "~/components/primitives";
 import { FiPlus } from "react-icons/fi";
 import { activeBlocksAtom, inActiveBlocksAtom } from "~/store";
-import { useResetAtom } from "jotai/utils";
+import { useUpdateAtom } from "jotai/utils";
 
 export interface ISideBarListCardProps {
   name: string;
