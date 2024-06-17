@@ -5,7 +5,6 @@ export interface IButtonGroupProps {
   children: React.ReactNode;
 }
 
-// will be used in src/components/editor/PreviewColumnTab/index.ts
 export function ButtonGroup({
   children,
   className,

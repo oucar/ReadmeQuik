@@ -12,10 +12,10 @@ export function ThemeSwitcher(props: IThemeSwitcherProps) {
       aria-label="Toggle Dark Mode"
       type="button"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="btn btn-square btn-ghost btn-sm"
+      className="btn btn-ghost btn-square btn-sm"
     >
-      <FiMoon className="block dark:hidden" aria-hidden="true" size={18} />
-      <FiSun className="hidden dark:block" aria-hidden="true" size={18} />
+      <FiMoon className="hidden-in-dark" aria-hidden="true" size={18} />
+      <FiSun className="hidden-in-light" aria-hidden="true" size={18} />
     </Button>
   );
 }

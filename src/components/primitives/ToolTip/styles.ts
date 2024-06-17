@@ -1,10 +1,6 @@
 import { cva } from "class-variance-authority";
 import { ExtractClass, Component } from "~/types";
 
-// cva: class-variance-authority
-// ExtractClass: Extracts the class from the styles object
-// Component: A generic component type
-// ToolTipStyleProps: The props for the ToolTip component
 export const toolTipStyles = cva(["tooltip"], {
   variants: {
     direction: {
