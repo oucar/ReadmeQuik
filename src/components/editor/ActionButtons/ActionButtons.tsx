@@ -6,7 +6,6 @@ import { useAtomCallback } from "jotai/utils";
 import { markdownAtom } from "~/store";
 export interface IActionButtonsProps {}
 
-// ActionButtons component to copy and download markdown
 export function ActionButtons(props: IActionButtonsProps) {
   const { handleCopy, isCopied } = useClipboard();
 
