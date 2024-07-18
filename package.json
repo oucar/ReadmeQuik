@@ -47,7 +47,8 @@
     "rehype-slug": "^5.0.1",
     "remark-gfm": "^3.0.1",
     "ts-dedent": "^2.2.0",
-    "use-editable": "^2.3.3"
+    "use-editable": "^2.3.3",
+    "use-immer": "^0.10.0"
   },
   "devDependencies": {
     "@types/node": "17.0.21",

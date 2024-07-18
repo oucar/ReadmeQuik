@@ -1,6 +1,6 @@
 import { atom } from 'jotai'
 import { BlockValuesObject, BlocksObjectWithId, BlockType } from '~/types'
-import { atomWithImmer, withImmer } from 'jotai/immer'
+import { atomWithImmer, withImmer } from 'jotai-immer'
 import { atomWithToggle, generateBlockData, GenerateMarkdown } from '~/utils'
 import { arrayMove } from '@dnd-kit/sortable'
 import { atomWithStorage } from 'jotai/utils'
