@@ -95,7 +95,7 @@ export function Hero(props: IHeroProps) {
 
           <Button
             component="a"
-            href="https://github.com/G3root/readme-generator"
+            href="https://github.com/oucar/ReadmeQuik"
             target="_blank"
             rel="noopener noreferrer"
             color={theme.colorScheme === 'dark' ? 'gray' : 'dark'}
