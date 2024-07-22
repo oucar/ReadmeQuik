@@ -1,43 +1,54 @@
-import { useAtomValue } from 'jotai'
-import * as React from 'react'
-import { FiArrowLeft, FiArrowRight, FiPlus } from 'react-icons/fi'
+import { useAtomValue } from "jotai";
+import * as React from "react";
+import { FiArrowLeft, FiArrowRight, FiPlus } from "react-icons/fi";
 import {
   addItemsModalStateAtom,
   blockValuesAtom,
   allBlocks,
   moveMultipleBlockItemAtom,
   toggleMultipleBlockItemAtom,
-} from '~/store'
-import { ExplicitMultipleBlock, ExplicitMultipleBlockValue } from '~/types'
-import { useUpdateAtom } from 'jotai/utils'
-import { MultipleItemsContentModal } from './MultipleItemsContentModal'
-import { Box, Button, Grid, Group, Space, Card, Text, Stack, ActionIcon } from '@mantine/core'
+} from "~/store";
+import { ExplicitMultipleBlock, ExplicitMultipleBlockValue } from "~/types";
+import { useUpdateAtom } from "jotai/utils";
+import { MultipleItemsContentModal } from "./MultipleItemsContentModal";
+import {
+  Box,
+  Button,
+  Grid,
+  Group,
+  Space,
+  Card,
+  Text,
+  Stack,
+  ActionIcon,
+} from "@mantine/core";
 
 export interface IMultipleItemsContentProps {
-  id: string
+  id: string;
 }
 
 export function MultipleItemsContent({ id }: IMultipleItemsContentProps) {
-  const blockvalues = useAtomValue(blockValuesAtom)
-  const moveItem = useUpdateAtom(moveMultipleBlockItemAtom)
-  const removeItem = useUpdateAtom(toggleMultipleBlockItemAtom)
-  const toggleModal = useUpdateAtom(addItemsModalStateAtom)
-  const multipleBlockValue = blockvalues[id] as ExplicitMultipleBlockValue
-  const block = useAtomValue(allBlocks)[id] as ExplicitMultipleBlock
+  const blockvalues = useAtomValue(blockValuesAtom);
+  const moveItem = useUpdateAtom(moveMultipleBlockItemAtom);
+  const removeItem = useUpdateAtom(toggleMultipleBlockItemAtom);
+  const toggleModal = useUpdateAtom(addItemsModalStateAtom);
+  const multipleBlockValue = blockvalues[id] as ExplicitMultipleBlockValue;
+  const block = useAtomValue(allBlocks)[id] as ExplicitMultipleBlock;
 
   const mergeBlockAndValues = multipleBlockValue.snippets.map((snippet) => {
-    const markdown = block.snippets.find((item) => item.name === snippet.name)?.markdown as string
-    return { ...snippet, markdown }
-  })
-  const activeItems = mergeBlockAndValues.filter((value) => value.isActive)
+    const markdown = block.snippets.find((item) => item.name === snippet.name)
+      ?.markdown as string;
+    return { ...snippet, markdown };
+  });
+  const activeItems = mergeBlockAndValues.filter((value) => value.isActive);
 
   const handleRemove = (name: string) => {
-    removeItem({ id, name })
-  }
+    removeItem({ id, name });
+  };
 
-  const handleMoveBlock = (dir: 'left' | 'right', name: string) => {
-    moveItem({ dir, name, id })
-  }
+  const handleMoveBlock = (dir: "left" | "right", name: string) => {
+    moveItem({ dir, name, id });
+  };
 
   return (
     <Box>
@@ -59,7 +70,7 @@ export function MultipleItemsContent({ id }: IMultipleItemsContentProps) {
                       color="teal"
                       aria-label="move block left"
                       onClick={() => {
-                        handleMoveBlock('left', data.name)
+                        handleMoveBlock("left", data.name);
                       }}
                     >
                       <FiArrowLeft aria-hidden />
@@ -69,7 +80,7 @@ export function MultipleItemsContent({ id }: IMultipleItemsContentProps) {
                       color="teal"
                       aria-label="move block right"
                       onClick={() => {
-                        handleMoveBlock('right', data.name)
+                        handleMoveBlock("right", data.name);
                       }}
                     >
                       <FiArrowRight aria-hidden />
@@ -78,7 +89,9 @@ export function MultipleItemsContent({ id }: IMultipleItemsContentProps) {
                   <Box>
                     <Stack align="center">
                       <Text weight={500}>{data.name}</Text>
-                      <div dangerouslySetInnerHTML={{ __html: data.markdown }} />
+                      <div
+                        dangerouslySetInnerHTML={{ __html: data.markdown }}
+                      />
                     </Stack>
                   </Box>
                   <Button
@@ -97,5 +110,5 @@ export function MultipleItemsContent({ id }: IMultipleItemsContentProps) {
       </Grid>
       <MultipleItemsContentModal id={id} />
     </Box>
-  )
+  );
 }

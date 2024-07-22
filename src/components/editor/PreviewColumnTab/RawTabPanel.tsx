@@ -1,21 +1,21 @@
-import * as React from 'react'
-import { useAtomValue } from 'jotai'
-import { markdownAtom } from '~/store'
-import { Prism } from '@mantine/prism'
-import { Box } from '@mantine/core'
+import * as React from "react";
+import { useAtomValue } from "jotai";
+import { markdownAtom } from "~/store";
+import { Prism } from "@mantine/prism";
+import { Box } from "@mantine/core";
 
 export interface IRawTabPanelProps {}
 
 export function RawTabPanel(props: IRawTabPanelProps) {
-  const markdown = useAtomValue(markdownAtom)
+  const markdown = useAtomValue(markdownAtom);
   return (
     <Box
       sx={(theme) => ({
-        overflow: 'auto',
-        height: '70vh',
+        overflow: "auto",
+        height: "70vh",
 
-        [theme.fn.largerThan('sm')]: {
-          height: '80vh',
+        [theme.fn.largerThan("sm")]: {
+          height: "80vh",
         },
       })}
     >
@@ -23,5 +23,5 @@ export function RawTabPanel(props: IRawTabPanelProps) {
         {markdown}
       </Prism>
     </Box>
-  )
+  );
 }

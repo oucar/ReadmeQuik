@@ -1,20 +1,26 @@
-import * as React from 'react'
-import { FiX, FiArrowDown, FiArrowUp, FiRefreshCw, FiTrash } from 'react-icons/fi'
-import { VscGripper } from 'react-icons/vsc'
+import * as React from "react";
+import {
+  FiX,
+  FiArrowDown,
+  FiArrowUp,
+  FiRefreshCw,
+  FiTrash,
+} from "react-icons/fi";
+import { VscGripper } from "react-icons/vsc";
 
-import { useSortable } from '@dnd-kit/sortable'
-import { CSS } from '@dnd-kit/utilities'
-import { useAtomValue } from 'jotai'
-import { useUpdateAtom, useAtomCallback } from 'jotai/utils'
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { useAtomValue } from "jotai";
+import { useUpdateAtom, useAtomCallback } from "jotai/utils";
 import {
   removeBlockAtom,
   allBlocks,
   deleteCustomBlockAtom,
   moveBlockAtom,
   handleResetAtom,
-} from '~/store'
-import { Category } from '~/types'
-import { CardEditableContent } from './CardEditableContent'
+} from "~/store";
+import { Category } from "~/types";
+import { CardEditableContent } from "./CardEditableContent";
 import {
   Card,
   Text,
@@ -24,57 +30,62 @@ import {
   Box,
   ActionIcon,
   Space,
-} from '@mantine/core'
+} from "@mantine/core";
 
 export interface IDraggableCardProps {
-  id: string
-  position: number
+  id: string;
+  position: number;
 }
 
 export function DraggableCard({ id, position }: IDraggableCardProps) {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id })
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id });
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-  }
+  };
 
-  const block = useAtomValue(allBlocks)[id]
-  const name = block.name
-  const deleteCustomBlock = useUpdateAtom(deleteCustomBlockAtom)
-  const moveBlock = useUpdateAtom(moveBlockAtom)
-  const resetBlock = useUpdateAtom(handleResetAtom)
-  const removeBlock = useUpdateAtom(removeBlockAtom)
+  const block = useAtomValue(allBlocks)[id];
+  const name = block.name;
+  const deleteCustomBlock = useUpdateAtom(deleteCustomBlockAtom);
+  const moveBlock = useUpdateAtom(moveBlockAtom);
+  const resetBlock = useUpdateAtom(handleResetAtom);
+  const removeBlock = useUpdateAtom(removeBlockAtom);
 
   const defaultBlocks = useAtomCallback(
     React.useCallback((get) => {
-      const blocks = get(allBlocks)
-      return blocks
+      const blocks = get(allBlocks);
+      return blocks;
     }, [])
-  )
+  );
 
   const handleRemove = () => {
-    removeBlock({ id })
-  }
+    removeBlock({ id });
+  };
   const handleDelete = () => {
-    deleteCustomBlock({ id })
-  }
+    deleteCustomBlock({ id });
+  };
   const handleUp = () => {
-    moveBlock({ position, dir: 'up' })
-  }
+    moveBlock({ position, dir: "up" });
+  };
   const handleDown = () => {
-    moveBlock({ position, dir: 'down' })
-  }
+    moveBlock({ position, dir: "down" });
+  };
   const handleReset = async () => {
-    const blocks = await defaultBlocks()
-    resetBlock({ id, blocks })
-  }
+    const blocks = await defaultBlocks();
+    resetBlock({ id, blocks });
+  };
 
   const isCustomBlock =
-    block.category == Category.CustomProject || block.category == Category.CustomGithubProfile
-  const theme = useMantineTheme()
+    block.category == Category.CustomProject ||
+    block.category == Category.CustomGithubProfile;
+  const theme = useMantineTheme();
   return (
     <Card shadow="sm" p="lg" ref={setNodeRef} style={style} {...attributes}>
-      <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
+      <Group
+        position="apart"
+        style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
+      >
         <Text weight={500}>{name}</Text>
         <Box>
           <Group>
@@ -86,10 +97,20 @@ export function DraggableCard({ id, position }: IDraggableCardProps) {
             >
               <FiArrowDown aria-hidden />
             </ActionIcon>
-            <ActionIcon onClick={handleUp} color="teal" variant="light" aria-label="move block up">
+            <ActionIcon
+              onClick={handleUp}
+              color="teal"
+              variant="light"
+              aria-label="move block up"
+            >
               <FiArrowUp aria-hidden />
             </ActionIcon>
-            <ActionIcon onClick={handleReset} color="teal" variant="light" aria-label="reset block">
+            <ActionIcon
+              onClick={handleReset}
+              color="teal"
+              variant="light"
+              aria-label="reset block"
+            >
               <FiRefreshCw aria-hidden />
             </ActionIcon>
             <ActionIcon
@@ -125,5 +146,5 @@ export function DraggableCard({ id, position }: IDraggableCardProps) {
         </Accordion>
       </Box>
     </Card>
-  )
+  );
 }

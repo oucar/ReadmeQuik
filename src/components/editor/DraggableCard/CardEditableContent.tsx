@@ -1,19 +1,19 @@
-import * as React from 'react'
-import { blockValuesAtom, allBlocks } from '~/store'
-import { useAtomValue } from 'jotai'
-import { BlockType } from '~/types'
-import { SingleItemContent } from './SingleItemContent'
-import { MultipleItemsContent } from './MultipleItemsContent'
+import * as React from "react";
+import { blockValuesAtom, allBlocks } from "~/store";
+import { useAtomValue } from "jotai";
+import { BlockType } from "~/types";
+import { SingleItemContent } from "./SingleItemContent";
+import { MultipleItemsContent } from "./MultipleItemsContent";
 
 export interface ICardEditableContentProps {
-  id: string
+  id: string;
 }
 
 function CardEditableContentRoot({ id }: ICardEditableContentProps) {
-  const defaultBlocksType = useAtomValue(allBlocks)[id].type
-  const blockValueType = useAtomValue(blockValuesAtom)[id].type
-  const single = BlockType.Single
-  const multiple = BlockType.Multiple
+  const defaultBlocksType = useAtomValue(allBlocks)[id].type;
+  const blockValueType = useAtomValue(blockValuesAtom)[id].type;
+  const single = BlockType.Single;
+  const multiple = BlockType.Multiple;
 
   return (
     <>
@@ -24,7 +24,7 @@ function CardEditableContentRoot({ id }: ICardEditableContentProps) {
         <MultipleItemsContent id={id} />
       ) : null}
     </>
-  )
+  );
 }
 
-export const CardEditableContent = React.memo(CardEditableContentRoot)
+export const CardEditableContent = React.memo(CardEditableContentRoot);

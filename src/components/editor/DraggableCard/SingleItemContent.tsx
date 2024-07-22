@@ -1,46 +1,52 @@
-import * as React from 'react'
-import { ExplicitSingleBlockValue } from '~/types'
-import pupa from 'pupa'
-import { useUpdateAtom } from 'jotai/utils'
-import { blockConfigModalStateAtom, blockValuesAtom, updateBlockValueMarkdownAtom } from '~/store'
-import { useAtomValue } from 'jotai'
-import { SingleItemContentModal } from './SingleItemContentModal'
-import { Box, Space, Textarea, Button, Group } from '@mantine/core'
+import * as React from "react";
+import { ExplicitSingleBlockValue } from "~/types";
+import pupa from "pupa";
+import { useUpdateAtom } from "jotai/utils";
+import {
+  blockConfigModalStateAtom,
+  blockValuesAtom,
+  updateBlockValueMarkdownAtom,
+} from "~/store";
+import { useAtomValue } from "jotai";
+import { SingleItemContentModal } from "./SingleItemContentModal";
+import { Box, Space, Textarea, Button, Group } from "@mantine/core";
 
 export interface ISingleItemContentProps {
-  id: string
+  id: string;
 }
 
 export function SingleItemContent({ id }: ISingleItemContentProps) {
-  const blockValue = useAtomValue(blockValuesAtom)[id] as ExplicitSingleBlockValue
-  const setMarkdown = useUpdateAtom(updateBlockValueMarkdownAtom)
-  const toggleModal = useUpdateAtom(blockConfigModalStateAtom)
+  const blockValue = useAtomValue(blockValuesAtom)[
+    id
+  ] as ExplicitSingleBlockValue;
+  const setMarkdown = useUpdateAtom(updateBlockValueMarkdownAtom);
+  const toggleModal = useUpdateAtom(blockConfigModalStateAtom);
 
   const onEditableChange = (code: string) => {
-    setMarkdown({ id, code })
-  }
+    setMarkdown({ id, code });
+  };
 
-  let markdown = blockValue.markdown
+  let markdown = blockValue.markdown;
 
-  const options = blockValue.options
+  const options = blockValue.options;
   if (options) {
     const placeHolder = options.reduce(
       (
         prev: {
-          [key: string]: string | boolean
+          [key: string]: string | boolean;
         },
         current
       ) => {
-        if (current.isColor && typeof current.value === 'string') {
-          prev[current.name] = current.value.replace('#', '')
+        if (current.isColor && typeof current.value === "string") {
+          prev[current.name] = current.value.replace("#", "");
         } else {
-          prev[current.name] = current.value
+          prev[current.name] = current.value;
         }
-        return prev
+        return prev;
       },
       {}
-    )
-    markdown = pupa(markdown, placeHolder)
+    );
+    markdown = pupa(markdown, placeHolder);
   }
 
   return (
@@ -62,5 +68,5 @@ export function SingleItemContent({ id }: ISingleItemContentProps) {
       />
       {options ? <SingleItemContentModal id={id} /> : null}
     </Box>
-  )
+  );
 }

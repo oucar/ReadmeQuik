@@ -1,20 +1,20 @@
 // @ts-nocheck
-import * as React from 'react'
+import * as React from "react";
 import {
   OptionType,
   Options,
   SingleBlockValueOptions,
   ExplicitSingleBlock,
   ExplicitSingleBlockValue,
-} from '~/types'
+} from "~/types";
 import {
   blockConfigModalStateAtom,
   blockValuesAtom,
   allBlocks,
   updateOptionsValueAtom,
-} from '~/store'
-import { useAtom, useAtomValue } from 'jotai'
-import { useUpdateAtom } from 'jotai/utils'
+} from "~/store";
+import { useAtom, useAtomValue } from "jotai";
+import { useUpdateAtom } from "jotai/utils";
 import {
   Modal,
   Button,
@@ -24,44 +24,49 @@ import {
   Checkbox,
   ColorInput,
   NumberInput,
-} from '@mantine/core'
-import { useForm } from '@mantine/form'
+} from "@mantine/core";
+import { useForm } from "@mantine/form";
 
 export interface ISingleItemContentModalProps {
-  id: string
+  id: string;
 }
 
 export function SingleItemContentModal({ id }: ISingleItemContentModalProps) {
-  const [isOpen, setIsOpen] = useAtom(blockConfigModalStateAtom)
+  const [isOpen, setIsOpen] = useAtom(blockConfigModalStateAtom);
 
   const handleClose = () => {
-    setIsOpen(false)
-  }
+    setIsOpen(false);
+  };
 
-  const blockValue = useAtomValue(blockValuesAtom)[id] as ExplicitSingleBlockValue
-  const blockValueOptions = blockValue.options as SingleBlockValueOptions[]
+  const blockValue = useAtomValue(blockValuesAtom)[
+    id
+  ] as ExplicitSingleBlockValue;
+  const blockValueOptions = blockValue.options as SingleBlockValueOptions[];
 
-  const block = useAtomValue(allBlocks)[id] as ExplicitSingleBlock
-  const blockOptions = block.options as OptionType[]
+  const block = useAtomValue(allBlocks)[id] as ExplicitSingleBlock;
+  const blockOptions = block.options as OptionType[];
 
-  const setOptionsValue = useUpdateAtom(updateOptionsValueAtom)
+  const setOptionsValue = useUpdateAtom(updateOptionsValueAtom);
 
   const form = useForm({
     initialValues: {},
-  })
+  });
 
-  let data = []
+  let data = [];
 
   for (let index = 0; index < blockOptions.length; index++) {
-    const option = blockOptions[index]
-    const type = option.type
-    const currentValue = blockValueOptions[index]
-    const name = currentValue.name
-    const value = currentValue.value
-    const label = option.label
+    const option = blockOptions[index];
+    const type = option.type;
+    const currentValue = blockValueOptions[index];
+    const name = currentValue.name;
+    const value = currentValue.value;
+    const label = option.label;
 
     if (type === Options.Select) {
-      const selectData = option.options.map((item) => ({ label: item, value: item }))
+      const selectData = option.options.map((item) => ({
+        label: item,
+        value: item,
+      }));
       data.push(
         <Select
           defaultValue={value as string}
@@ -71,7 +76,7 @@ export function SingleItemContentModal({ id }: ISingleItemContentModalProps) {
           data={selectData}
           {...form.getInputProps(name as any)}
         />
-      )
+      );
     }
     if (type === Options.CheckBox) {
       data.push(
@@ -79,13 +84,13 @@ export function SingleItemContentModal({ id }: ISingleItemContentModalProps) {
           defaultValue={value as any}
           key={name}
           label={label}
-          {...form.getInputProps(name as any, { type: 'checkbox' })}
+          {...form.getInputProps(name as any, { type: "checkbox" })}
         />
-      )
+      );
     }
 
     if (type === Options.Text) {
-      if (option.textType === 'color') {
+      if (option.textType === "color") {
         data.push(
           <ColorInput
             defaultValue={value as string}
@@ -95,7 +100,7 @@ export function SingleItemContentModal({ id }: ISingleItemContentModalProps) {
             key={name}
             {...form.getInputProps(name as any)}
           />
-        )
+        );
       } else {
         data.push(
           <TextInput
@@ -103,21 +108,25 @@ export function SingleItemContentModal({ id }: ISingleItemContentModalProps) {
             label={label}
             id={name}
             type={option.textType as any}
-            key={name}             
+            key={name}
             {...form.getInputProps(name as any)}
           />
-          
-        )
+        );
       }
     }
   }
 
   return (
-    <Modal centered opened={isOpen} onClose={() => handleClose()} title="Update configs">
+    <Modal
+      centered
+      opened={isOpen}
+      onClose={() => handleClose()}
+      title="Update configs"
+    >
       <form
         onSubmit={form.onSubmit((data) => {
-          setOptionsValue({ id, values: data })
-          handleClose()
+          setOptionsValue({ id, values: data });
+          handleClose();
         })}
       >
         <Stack>
@@ -128,5 +137,5 @@ export function SingleItemContentModal({ id }: ISingleItemContentModalProps) {
         </Stack>
       </form>
     </Modal>
-  )
+  );
 }

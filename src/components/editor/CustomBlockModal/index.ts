@@ -1,1 +1,1 @@
-export * from './CustomBlockModal'
+export * from "./CustomBlockModal";

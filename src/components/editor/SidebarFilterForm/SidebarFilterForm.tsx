@@ -1,32 +1,32 @@
-import { useAtom } from 'jotai'
-import * as React from 'react'
-import { FiPlus } from 'react-icons/fi'
-import { customBlockModalStateAtom } from '~/store'
-import CustomBlockModal from '../CustomBlockModal/CustomBlockModal'
-import { useTranslation } from 'next-i18next'
-import { Stack, TextInput, Select, Button } from '@mantine/core'
+import { useAtom } from "jotai";
+import * as React from "react";
+import { FiPlus } from "react-icons/fi";
+import { customBlockModalStateAtom } from "~/store";
+import CustomBlockModal from "../CustomBlockModal/CustomBlockModal";
+import { useTranslation } from "next-i18next";
+import { Stack, TextInput, Select, Button } from "@mantine/core";
 
 export interface ISidebarFilterFormProps {
-  blockType: 'all' | 'project' | 'profile'
-  query: string
-  handleBlockType: (value: 'all' | 'project' | 'profile' | null) => void
-  handleQuery: (e: React.ChangeEvent<HTMLInputElement>) => void
+  blockType: "all" | "project" | "profile";
+  query: string;
+  handleBlockType: (value: "all" | "project" | "profile" | null) => void;
+  handleQuery: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const options = [
   {
-    label: 'All blocks',
-    value: 'all',
+    label: "All blocks",
+    value: "all",
   },
   {
-    label: 'Project Readme',
-    value: 'project',
+    label: "Project Readme",
+    value: "project",
   },
   {
-    label: 'Github Profile Readme',
-    value: 'profile',
+    label: "Github Profile Readme",
+    value: "profile",
   },
-]
+];
 
 export function SidebarFilterForm({
   query,
@@ -34,8 +34,8 @@ export function SidebarFilterForm({
   blockType,
   handleBlockType,
 }: ISidebarFilterFormProps) {
-  const [isOpen, toggleModal] = useAtom(customBlockModalStateAtom)
-  const { t } = useTranslation('editor')
+  const [isOpen, toggleModal] = useAtom(customBlockModalStateAtom);
+  const { t } = useTranslation("editor");
   return (
     <Stack>
       <Select
@@ -53,9 +53,9 @@ export function SidebarFilterForm({
         aria-label="search blocks"
       />
       <Button leftIcon={<FiPlus aria-hidden />} onClick={() => toggleModal()}>
-        {t('custom-block')}
+        {t("custom-block")}
       </Button>
       {isOpen ? <CustomBlockModal /> : null}
     </Stack>
-  )
+  );
 }
