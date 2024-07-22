@@ -11,7 +11,7 @@ const { nextId, inActiveBlocks, blockValues, defaultBlocks } =
 // atoms which key of defaultBlocksAtom/customBlocksAtom which are active
 // @ts-ignore
 export const activeBlocksAtom = withImmer<string[]>(
-  atomWithStorage("active", [])
+  atomWithStorage<string[]>("active", [])
 );
 
 // atoms which key of defaultBlocksAtom/customBlocksAtom which are active
