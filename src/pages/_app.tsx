@@ -42,7 +42,7 @@ function MyApp(props: AppProps) {
                 src: `url('/fonts/Manrope.woff2') format("woff2")`,
                 fontFamily: "Manrope",
                 fontStyle: "normal",
-                fontWeight: "100 900",
+                fontWeight: [100, 200, 300, 400, 500, 600, 700, 800, 900],
                 fontDisplay: "swap",
               },
             },
