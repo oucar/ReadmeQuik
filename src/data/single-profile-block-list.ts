@@ -1,5 +1,4 @@
 import { Category, Block, BlockType, Options } from "~/types";
-// TODO: FIX LATER
 import dedent from "ts-dedent";
 
 const githubReadmeStatBaseURl = "https://github-readme-stats.vercel.app/api?";

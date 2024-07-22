@@ -1,7 +1,6 @@
 // https://github.com/rahuldkjain/github-profile-readme-generator/blob/master/src/constants/skills.js
 
 import { Category, Block, BlockType } from "~/types";
-// TODO: FIX LATER
 import dedent from "ts-dedent";
 
 const categorizedSkills = {
