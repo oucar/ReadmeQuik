@@ -20,31 +20,57 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Run Locally
     
-    Clone the project
-
+    Follow these steps to set up and run the project locally on your machine.
+    
+    ### Prerequisites
+    Make sure you have the following software installed on your machine:
+    - [Node.js](https://nodejs.org/) (v14 or later)
+    - [npm](https://www.npmjs.com/) (v6 or later)
+    
+    ### Steps
+    
+    1. **Clone the project**
+    
     \`\`\`bash
       git clone https://link-to-project
     \`\`\`
-
-    Go to the project directory
-
+    
+    2. **Navigate to the project directory**
+    
     \`\`\`bash
       cd my-project
     \`\`\`
-
-    Install dependencies
-
+    
+    3. **Install dependencies**
+    
     \`\`\`bash
       npm install
     \`\`\`
-
-    Start the server
-
+    
+    4. **Set up environment variables**
+    
+    Create a \`.env.local\` file in the project root and add the necessary environment variables. Refer to the \`.env.example\` file for the required variables.
+    
+    5. **Run linting to check for code issues**
+    
     \`\`\`bash
-      npm run start
+      npm run lint
     \`\`\`
-
-`,
+    
+    6. **Build the project**
+    
+    \`\`\`bash
+      npm run build
+    \`\`\`
+    
+    7. **Start the development server**
+    
+    \`\`\`bash
+      npm run dev
+    \`\`\`
+    
+    Your application should now be running at [http://localhost:3000](http://localhost:3000).
+  `,
   },
   {
     name: "API Reference",
