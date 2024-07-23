@@ -51,7 +51,7 @@ export function Hero(props: IHeroProps) {
             },
           })}
         >
-          <Box>Create readme files</Box>
+          <Box>Create README files</Box>
           <Box
             sx={{
               backgroundImage:
@@ -75,8 +75,8 @@ export function Hero(props: IHeroProps) {
             },
           })}
         >
-          All in one tool to quickly generate a readme for your project or
-          github profile
+                    Effortlessly create Markdowns for Documentation, GitHub
+                    Profiles, and More 🚀
         </Text>
         <Space h="lg" />
         <Group position="center">
