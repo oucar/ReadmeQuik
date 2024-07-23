@@ -112,13 +112,46 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Running Tests
 
-    To run tests, run the following command
+    To run tests, run the following command:
 
     \`\`\`bash
       npm run test
     \`\`\`
 
-`,
+    ### Using React Testing Library
+
+    This project uses [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for testing React components. Here is an example of how to write a test for a component.
+
+    First, ensure you have the necessary dependencies installed:
+
+    \`\`\`bash
+      npm install --save-dev @testing-library/react @testing-library/jest-dom
+    \`\`\`
+
+    Then, create a test file for your component. For example, if you have a \`Button\` component, create a \`Button.test.js\` file in the same directory as the component.
+
+    \`\`\`javascript
+    // Button.test.js
+    import React from 'react';
+    import { render, screen } from '@testing-library/react';
+    import '@testing-library/jest-dom/extend-expect';
+    import Button from './Button';
+
+    test('renders the button with the correct text', () => {
+      render(<Button>Click me</Button>);
+      const buttonElement = screen.getByText(/click me/i);
+      expect(buttonElement).toBeInTheDocument();
+    });
+    \`\`\`
+
+    To run this test, simply use the following command:
+
+    \`\`\`bash
+      npm run test
+    \`\`\`
+
+    This will start the test runner in interactive watch mode. You can then see the test results in your terminal.
+  `,
   },
   {
     name: "Authors",
