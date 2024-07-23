@@ -75,7 +75,8 @@ export function Hero(props: IHeroProps) {
             },
           })}
         >
-          Effortlessly craft custom MD documents for Documentation, GitHub Profiles, and More 🚀
+                    Effortlessly create Markdowns for Documentation, GitHub
+                    Profiles, and More 🚀
         </Text>
         <Space h="lg" />
         <Group position="center">
