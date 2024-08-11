@@ -77,39 +77,170 @@ export const ProjectBlockList: Block[] = [
     category: Category.Project,
     type: BlockType.Single,
     markdown: dedent`
+    
     ## API Reference
+  
+    This section provides details about the API endpoints available in the project.
 
-    #### Get all items
+    ### Get All Items
 
-    \`\`\`http
-      GET /api/items
-    \`\`\`
-
-    | Parameter | Type     | Description                |
-    | :-------- | :------- | :------------------------- |
-    | \`api_key\` | \`string\` | **Required**. Your API key |
-
-    #### Get item
+    Retrieves a list of all items.
 
     \`\`\`http
-      GET /api/items/$\{id}
+    GET /api/items
     \`\`\`
+
+    **Query Parameters:**
+
+    | Parameter | Type     | Description                        |
+    | :-------- | :------- | :--------------------------------- |
+    | \`api_key\` | \`string\` | **Required**. Your API key          |
+    | \`limit\`   | \`number\` | Optional. Limit the number of items |
+    | \`offset\`  | \`number\` | Optional. Offset for pagination     |
+
+    **Response:**
+
+    Returns an array of items.
+
+    \`\`\`json
+    [
+      {
+        "id": "1",
+        "name": "Item 1",
+        "description": "Description of item 1",
+        "price": 10.99
+      },
+      {
+        "id": "2",
+        "name": "Item 2",
+        "description": "Description of item 2",
+        "price": 12.99
+      }
+    ]
+    \`\`\`
+
+    ### Get Item by ID
+
+    Retrieves details of a specific item by its ID.
+
+    \`\`\`http
+    GET /api/items/\${id}
+    \`\`\`
+
+    **Path Parameters:**
 
     | Parameter | Type     | Description                       |
     | :-------- | :------- | :-------------------------------- |
-    | \`id\`      | \`string\` | **Required**. Id of item to fetch |
+    | \`id\`      | \`string\` | **Required**. ID of the item to fetch |
 
-    #### add(num1, num2)
+    **Response:**
 
-    Takes two numbers and returns the sum.
+    Returns the item object.
 
-`,
+    \`\`\`json
+    {
+      "id": "1",
+      "name": "Item 1",
+      "description": "Description of item 1",
+      "price": 10.99
+    }
+    \`\`\`
+
+    ### Create a New Item
+
+    Creates a new item in the inventory.
+
+    \`\`\`http
+    POST /api/items
+    \`\`\`
+
+    **Body Parameters:**
+
+    | Parameter   | Type     | Description                        |
+    | :---------- | :------- | :--------------------------------- |
+    | \`name\`      | \`string\` | **Required**. Name of the item        |
+    | \`description\` | \`string\` | **Required**. Description of the item |
+    | \`price\`     | \`number\` | **Required**. Price of the item       |
+
+    **Response:**
+
+    Returns the newly created item object.
+
+    \`\`\`json
+    {
+      "id": "3",
+      "name": "Item 3",
+      "description": "Description of item 3",
+      "price": 15.99
+    }
+    \`\`\`
+
+    ### Update an Item
+
+    Updates an existing item by its ID.
+
+    \`\`\`http
+    PUT /api/items/\${id}
+    \`\`\`
+
+    **Path Parameters:**
+
+    | Parameter | Type     | Description                       |
+    | :-------- | :------- | :-------------------------------- |
+    | \`id\`      | \`string\` | **Required**. ID of the item to update |
+
+    **Body Parameters:**
+
+    | Parameter   | Type     | Description                        |
+    | :---------- | :------- | :--------------------------------- |
+    | \`name\`      | \`string\` | Optional. Name of the item           |
+    | \`description\` | \`string\` | Optional. Description of the item    |
+    | \`price\`     | \`number\` | Optional. Price of the item          |
+
+    **Response:**
+
+    Returns the updated item object.
+
+    \`\`\`json
+    {
+      "id": "1",
+      "name": "Updated Item 1",
+      "description": "Updated description of item 1",
+      "price": 11.99
+    }
+    \`\`\`
+
+    ### Delete an Item
+
+    Deletes an item by its ID.
+
+    \`\`\`http
+    DELETE /api/items/\${id}
+    \`\`\`
+
+    **Path Parameters:**
+
+    | Parameter | Type     | Description                       |
+    | :-------- | :------- | :-------------------------------- |
+    | \`id\`      | \`string\` | **Required**. ID of the item to delete |
+
+    **Response:**
+
+    Returns a success message.
+
+    \`\`\`json
+    {
+      "message": "Item deleted successfully"
+    }
+    \`\`\`
+    `,
   },
   {
     name: "Running Tests",
     category: Category.Project,
     type: BlockType.Single,
     markdown: dedent`
+
     ## Running Tests
 
     To run tests, run the following command:
