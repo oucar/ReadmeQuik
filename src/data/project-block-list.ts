@@ -289,11 +289,13 @@ export const ProjectBlockList: Block[] = [
     category: Category.Project,
     type: BlockType.Single,
     markdown: dedent`
+      
     ## Authors
-
-    - [@oucar](https://github.com/oucar/ReadmeQuik)
-
-`,
+  
+    - [@oucar](https://github.com/oucar/ReadmeQuik)  
+    - [@johndoe](https://github.com/johndoe) - Contributed to the initial setup and project architecture.
+    - [@janedoe](https://github.com/janedoe) - Focused on the UI/UX design and frontend development.
+    `,
   },
   {
     name: "Badges",
