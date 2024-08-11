@@ -19,7 +19,7 @@ export function NavbarLogo(props: INavbarLogoProps) {
         },
       }}
     >
-      Readme
+      ReadmeQuik
     </Text>
   );
 }

@@ -51,18 +51,41 @@ export function Hero(props: IHeroProps) {
             },
           })}
         >
-          <Box>Create readme files</Box>
+          <Box>Build. Create. Innovate.</Box>
           <Box
             sx={{
-              backgroundImage:
-                "linear-gradient(to right, rgb(96, 165, 250), rgb(52, 211, 153))",
+              backgroundImage: "linear-gradient(to right, #09203F, #537895)",
               backgroundClip: "text",
               color: "transparent",
+              lineHeight: 1.2,
+              // FIX FOR SAFARI!
+              paddingBottom: "0.1em",
             }}
           >
-            with speed
+            with drag & drop
           </Box>
         </Box>
+        <Box
+          component="h1"
+          sx={() => ({
+            fontSize: "2.25rem",
+            lineHeight: "2.5rem",
+            fontWeight: 800,
+            letterSpacing: "-.025em",
+            textAlign: "left",
+            ["@media (min-width: 640px)"]: {
+              fontSize: "3rem",
+              lineHeight: 1,
+            },
+            ["@media (min-width: 768px)"]: {
+              fontSize: "4rem",
+              lineHeight: 1,
+            },
+            ["@media (min-width: 1024px)"]: {
+              textAlign: "center",
+            },
+          })}
+        ></Box>
         <Text
           sx={() => ({
             fontSize: 24,
@@ -75,8 +98,7 @@ export function Hero(props: IHeroProps) {
             },
           })}
         >
-          All in one tool to quickly generate a readme for your project or
-          github profile
+          Your markdown, GitHub profiles, and brainstorms—effortlessly crafted.
         </Text>
         <Space h="lg" />
         <Group position="center">
@@ -85,7 +107,11 @@ export function Hero(props: IHeroProps) {
             href="/editor"
             size="xl"
             variant="gradient"
-            gradient={{ from: "blue", to: "teal", deg: 105 }}
+            gradient={{
+              from: "#614385",
+              to: "#516395",
+              deg: 105,
+            }}
             sx={() => ({
               width: "100%",
               [theme.fn.largerThan("sm")]: {
@@ -94,26 +120,6 @@ export function Hero(props: IHeroProps) {
             })}
           >
             Get started
-          </Button>
-
-          <Button
-            component="a"
-            href="https://github.com/oucar/ReadmeQuik"
-            target="_blank"
-            rel="noopener noreferrer"
-            color={theme.colorScheme === "dark" ? "gray" : "dark"}
-            size="xl"
-            variant="outline"
-            radius="md"
-            leftIcon={<DiGithubBadge size={35} />}
-            sx={() => ({
-              width: "100%",
-              [theme.fn.largerThan("sm")]: {
-                width: "auto",
-              },
-            })}
-          >
-            GitHub
           </Button>
         </Group>
       </Container>
