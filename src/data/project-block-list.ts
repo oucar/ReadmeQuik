@@ -20,31 +20,57 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Run Locally
     
-    Clone the project
-
+    Follow these steps to set up and run the project locally on your machine.
+    
+    ### Prerequisites
+    Make sure you have the following software installed on your machine:
+    - [Node.js](https://nodejs.org/) (v14 or later)
+    - [npm](https://www.npmjs.com/) (v6 or later)
+    
+    ### Steps
+    
+    1. **Clone the project**
+    
     \`\`\`bash
       git clone https://link-to-project
     \`\`\`
-
-    Go to the project directory
-
+    
+    2. **Navigate to the project directory**
+    
     \`\`\`bash
       cd my-project
     \`\`\`
-
-    Install dependencies
-
+    
+    3. **Install dependencies**
+    
     \`\`\`bash
       npm install
     \`\`\`
-
-    Start the server
-
+    
+    4. **Set up environment variables**
+    
+    Create a \`.env.local\` file in the project root and add the necessary environment variables. Refer to the \`.env.example\` file for the required variables.
+    
+    5. **Run linting to check for code issues**
+    
     \`\`\`bash
-      npm run start
+      npm run lint
     \`\`\`
-
-`,
+    
+    6. **Build the project**
+    
+    \`\`\`bash
+      npm run build
+    \`\`\`
+    
+    7. **Start the development server**
+    
+    \`\`\`bash
+      npm run dev
+    \`\`\`
+    
+    Your application should now be running at [http://localhost:3000](http://localhost:3000).
+  `,
   },
   {
     name: "API Reference",
@@ -86,13 +112,46 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Running Tests
 
-    To run tests, run the following command
+    To run tests, run the following command:
 
     \`\`\`bash
       npm run test
     \`\`\`
 
-`,
+    ### Using React Testing Library
+
+    This project uses [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for testing React components. Here is an example of how to write a test for a component.
+
+    First, ensure you have the necessary dependencies installed:
+
+    \`\`\`bash
+      npm install --save-dev @testing-library/react @testing-library/jest-dom
+    \`\`\`
+
+    Then, create a test file for your component. For example, if you have a \`Button\` component, create a \`Button.test.js\` file in the same directory as the component.
+
+    \`\`\`javascript
+    // Button.test.js
+    import React from 'react';
+    import { render, screen } from '@testing-library/react';
+    import '@testing-library/jest-dom/extend-expect';
+    import Button from './Button';
+
+    test('renders the button with the correct text', () => {
+      render(<Button>Click me</Button>);
+      const buttonElement = screen.getByText(/click me/i);
+      expect(buttonElement).toBeInTheDocument();
+    });
+    \`\`\`
+
+    To run this test, simply use the following command:
+
+    \`\`\`bash
+      npm run test
+    \`\`\`
+
+    This will start the test runner in interactive watch mode. You can then see the test results in your terminal.
+  `,
   },
   {
     name: "Authors",
