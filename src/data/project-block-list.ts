@@ -393,13 +393,21 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Environment Variables
 
-    To run this project, you will need to add the following environment variables to your .env file
+    To run this project, you will need to add the following environment variables to your \`.env\` file:
 
-    \`API_KEY\`
+    \`API_KEY\`: Your unique API key for accessing the external service.
 
-    \`ANOTHER_API_KEY\`
+    \`ANOTHER_API_KEY\`: Another key used for a different external service.
 
-`,
+    ### Example .env file
+
+    \`\`\`bash
+    API_KEY=your-api-key-here
+    ANOTHER_API_KEY=your-another-api-key-here
+    \`\`\`
+
+    Make sure to keep your \`.env\` file secure and never commit it to version control.
+    `
   },
   {
     name: "FAQ",
