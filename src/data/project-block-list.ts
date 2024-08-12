@@ -546,9 +546,10 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Support
 
-    For support, email fake@fake.com or join our Slack channel.
+    For support, feel free to reach out via email at [support@yourdomain.com](mailto:support@yourdomain.com) or join our [Slack channel](https://join.slack.com/your-slack-channel-link).
 
-`,
+    We're here to help with any questions or issues you may encounter.
+    `
   },
   {
     name: "Tech Stack",
@@ -557,11 +558,12 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Tech Stack
 
-    **Client:** React, Redux, TailwindCSS
+    **Client:** React, Redux, Tailwind CSS, TypeScript
 
-    **Server:** Node, Express
+    **Server:** Node, Express, MongoDB
 
-`,
+    **DevOps:** Docker, Kubernetes, Jenkins
+    `
   },
   {
     name: "Appendix",
@@ -570,9 +572,8 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Appendix
 
-    Any additional information goes here
-
-`,
+    Additional information or resources related to the project can be found here. This might include links to documentation, tutorials, or any other relevant materials.
+    `
   },
   {
     name: "Usage/Examples",
@@ -581,15 +582,34 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Usage/Examples
 
+    First, install the package using npm:
+
+    \`\`\`bash
+    npm install my-project
+    \`\`\`
+
+    Then, you can import and use the component in your React application:
+
     \`\`\`javascript
-    import Component from 'my-project'
+    import Component from 'my-project';
 
     function App() {
-      return <Component />
+      return <Component />;
     }
     \`\`\`
 
-`,
+    You can also pass props to the component for customization:
+
+    \`\`\`javascript
+    import Component from 'my-project';
+
+    function App() {
+      return <Component propName="value" />;
+    }
+    \`\`\`
+
+    For more details on available props and usage examples, visit the Component API Documentation.
+    `
   },
   {
     name: "Used By",
@@ -598,11 +618,13 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Used By
 
-    This project is used by the following companies:
+    This project is trusted and utilized by the following companies:
 
-    - Company 1
-    - Company 2
+    - **TechCorp** - Innovating the future with cutting-edge technology solutions.
+    - **DataSolutions** - Empowering businesses with data-driven insights.
+    - **Webify** - Revolutionizing the web development landscape with modern tools.
 
-`,
-  },
+    If your company uses this project, we'd love to hear from you! Feel free to [let us know](mailto:support@yourdomain.com).
+    `
+  }
 ];
