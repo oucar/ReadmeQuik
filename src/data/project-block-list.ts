@@ -459,26 +459,35 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Installation 
     
-    Install my-project with npm
+    Follow these steps to install and set up the project:
+
+    1. **Clone the repository:**
 
     \`\`\`bash
-    npm install my-project
+    git clone https://github.com/your-username/my-project.git
+    \`\`\`
+
+    2. **Navigate to the project directory:**
+
+    \`\`\`bash
     cd my-project
     \`\`\`
 
-`,
-  },
-  {
-    name: "Lessons",
-    category: Category.Project,
-    type: BlockType.Single,
-    markdown: dedent`
-    ## Lessons Learned
+    3. **Install dependencies with npm:**
 
-    What did you learn while building this project? What challenges did you face and how did you overcome them?
+    \`\`\`bash
+    npm install
+    \`\`\`
 
-`,
-  },
+    4. **Start the development server:**
+
+    \`\`\`bash
+    npm run dev
+    \`\`\`
+
+    The application should now be running at [http://localhost:3000](http://localhost:3000).
+    `
+  },  
   {
     name: "License",
     category: Category.Project,
