@@ -407,7 +407,7 @@ export const ProjectBlockList: Block[] = [
     \`\`\`
 
     Make sure to keep your \`.env\` file secure and never commit it to version control.
-    `
+    `,
   },
   {
     name: "FAQ",
@@ -427,7 +427,7 @@ export const ProjectBlockList: Block[] = [
     #### Help! I did \`git push --force\` and now everything's on fire!
 
     Congratulations, you've unlocked the "Git Firefighter" badge! Now, calmly review what went wrong, restore from backup, and maybe reconsider that force push next time.
-    `
+    `,
   },
   {
     name: "Features",
@@ -440,7 +440,7 @@ export const ProjectBlockList: Block[] = [
     - **Live Previews:** Instantly see the changes you make as you code, without needing to refresh.
     - **Fullscreen Mode:** Maximize your workspace with a distraction-free fullscreen mode.
     - **Cross-Platform Compatibility:** Enjoy the same experience on Windows, macOS, and Linux.
-    `
+    `,
   },
   {
     name: "Feedback",
@@ -486,8 +486,8 @@ export const ProjectBlockList: Block[] = [
     \`\`\`
 
     The application should now be running at [http://localhost:3000](http://localhost:3000).
-    `
-  },  
+    `,
+  },
   {
     name: "License",
     category: Category.Project,
@@ -495,42 +495,19 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## License
 
-    [MIT](https://choosealicense.com/licenses/mit/)
+    This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
 
-`,
+    You are free to use, modify, and distribute this software under the terms of the MIT License.
+    `,
   },
   {
     name: "Logo",
     category: Category.Project,
     type: BlockType.Single,
     markdown: dedent`
-    ![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
-
-`,
-  },
-  {
-    name: "Optimizations",
-    category: Category.Project,
-    type: BlockType.Single,
-    markdown: dedent`
-    ## Optimizations
-
-    What optimizations did you make in your code? E.g. refactors, performance improvements, accessibility
-
-`,
-  },
-  {
-    name: "Related",
-    category: Category.Project,
-    type: BlockType.Single,
-    markdown: dedent`
-    ## Related
-
-    Here are some related projects
-
-    [Awesome README](https://github.com/matiassingers/awesome-readme)
-
-`,
+    ## Logo
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React Logo" width="200"/>
+    `,
   },
   {
     name: "Roadmap",
@@ -539,23 +516,12 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Roadmap
 
-    - Additional browser support
-    - Add more integrations
-
-`,
-  },
-  {
-    name: "Acknowledgements",
-    category: Category.Project,
-    type: BlockType.Single,
-    markdown: dedent`
-    ## Acknowledgements
-
-    - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
-    - [Awesome README](https://github.com/matiassingers/awesome-readme)
-    - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
-
-`,
+    - **Additional Browser Support:** Expand compatibility to include older versions of popular browsers and ensure smooth performance across all devices.
+    - **Add More Integrations:** Introduce integrations with additional third-party services and tools to enhance the functionality and user experience.
+    - **Improved Documentation:** Expand and refine the project documentation to include more comprehensive guides and examples.
+    - **Performance Optimization:** Focus on reducing load times and improving the overall efficiency of the application.
+    - **User Feedback System:** Implement a feedback system to gather user input and prioritize features based on community needs.
+    `
   },
   {
     name: "Screenshots",
@@ -563,10 +529,15 @@ export const ProjectBlockList: Block[] = [
     type: BlockType.Single,
     markdown: dedent`
     ## Screenshots
+    
+    - A screenshot displaying feature 1
 
-    ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+    ![App Screenshot 1](https://via.placeholder.com/468x300.png?text=App+Screenshot)
 
-`,
+    - A screenshot displaying feature 2
+
+    ![App Screenshot 2](https://via.placeholder.com/468x300.png?text=App+Screenshot)
+    `,
   },
   {
     name: "Support",
