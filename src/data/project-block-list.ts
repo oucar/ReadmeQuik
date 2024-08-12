@@ -7,10 +7,9 @@ export const ProjectBlockList: Block[] = [
     category: Category.Project,
     type: BlockType.Single,
     markdown: dedent`
-    # Project Title
-
-    A brief description of what this project does and who it's for
-
+    # My Awesome Project
+  
+    This project is a web application that helps users track their daily tasks and increase productivity.
     `,
   },
   {
@@ -303,14 +302,13 @@ export const ProjectBlockList: Block[] = [
     type: BlockType.Single,
     markdown: dedent`
     ## Badges
-    
-    Add badges from somewhere like: [shields.io](https://shields.io/)
-    
-    [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-    [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-    [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
-
-  `,
+      
+    Showcase the key features or technologies used in your project with badges:
+      
+    ![React](https://img.shields.io/badge/React-v18.2.0-blue)
+    ![Next.js](https://img.shields.io/badge/Next.js-v14.2.5-black)
+    ![Node.js](https://img.shields.io/badge/Node.js-v14.17.0-green)
+    `,
   },
   {
     name: "Contributing",
@@ -318,14 +316,40 @@ export const ProjectBlockList: Block[] = [
     type: BlockType.Single,
     markdown: dedent`
     ## Contributing
-
+  
     Contributions are always welcome!
+  
+    If you'd like to contribute, please follow these steps:
+  
+    1. **Fork the repository** to your GitHub account.
+    2. **Clone your fork** to your local machine:
 
-    See \`contributing.md\` for ways to get started.
+    \`\`\`bash
+    git clone https://github.com/your-username/your-repo.git
+    \`\`\`
+
+    3. **Create a new branch** for your feature or bugfix:
+
+    \`\`\`bash
+    git checkout -b feature/your-feature-name
+    \`\`\`
+
+    4. **Make your changes** to the codebase.
+
+    5. **Commit your changes** and push them to your fork:
+
+    \`\`\`bash
+    git add .
+    git commit -m 'Add some feature'
+    git push origin feature/your-feature-name
+    \`\`\`
+
+    6. **Open a Pull Request** on the main repository.
+
+    See \`contributing.md\` for more detailed guidelines.
 
     Please adhere to this project's \`code of conduct\`.
-
-`,
+    `,
   },
   {
     name: "Demo",
@@ -334,9 +358,18 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Demo
 
-    Insert gif or link to demo
+    Check out the live demo below:
 
-`,
+    ![Demo GIF](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdG80bnFuZWkwaWRxeGlwcHVqazFzM2Z0bXcwcndxN3c3b3VwbnVnaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d9O5lPyufbSfZzC1pq/giphy.gif)
+
+    Or watch the walkthrough on [YouTube](https://www.youtube.com/watch?v=demo-video-url).
+
+    ### Quick Walkthrough
+
+    1. **Home Page:** Displays the main features of the app.
+    2. **User Dashboard:** Allows users to manage their tasks.
+    3. **Settings:** Customize your user experience.
+    `,
   },
   {
     name: "Deployment",
@@ -350,17 +383,6 @@ export const ProjectBlockList: Block[] = [
     \`\`\`bash
       npm run deploy
     \`\`\`
-
-`,
-  },
-  {
-    name: "Documentation",
-    category: Category.Project,
-    type: BlockType.Single,
-    markdown: dedent`
-    ## Documentation
-
-    [Documentation](https://linktodocumentation)
 
 `,
   },
