@@ -416,15 +416,18 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## FAQ
 
-    #### Question 1
+    #### What do I do if I accidentally commit to the main branch?
 
-    Answer 1
+    First, don't panic. Then, quietly \`git checkout -b new-branch\` and act like nothing happened. We’ve all been there.
 
-    #### Question 2
+    #### How do I undo my last commit?
 
-    Answer 2
+    Ah, the famous \`git reset --hard HEAD~1\`. Use it wisely, young padawan. But remember, with great power comes great responsibility.
 
-`,
+    #### Help! I did \`git push --force\` and now everything's on fire!
+
+    Congratulations, you've unlocked the "Git Firefighter" badge! Now, calmly review what went wrong, restore from backup, and maybe reconsider that force push next time.
+    `
   },
   {
     name: "Features",
@@ -433,12 +436,11 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Features
 
-    - Light/dark mode toggle
-    - Live previews
-    - Fullscreen mode
-    - Cross platform
-
-`,
+    - **Light/Dark Mode Toggle:** Seamlessly switch between light and dark themes based on your preference.
+    - **Live Previews:** Instantly see the changes you make as you code, without needing to refresh.
+    - **Fullscreen Mode:** Maximize your workspace with a distraction-free fullscreen mode.
+    - **Cross-Platform Compatibility:** Enjoy the same experience on Windows, macOS, and Linux.
+    `
   },
   {
     name: "Feedback",
@@ -447,9 +449,8 @@ export const ProjectBlockList: Block[] = [
     markdown: dedent`
     ## Feedback
 
-    If you have any feedback, please reach out to us at fake@fake.com
-
-`,
+    If you have any feedback, please reach out to us at hello@ucaronur.com.
+    `,
   },
   {
     name: "Installation",
