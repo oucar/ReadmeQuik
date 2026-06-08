@@ -52,8 +52,9 @@ function useEditorShortcuts() {
       // Cmd/Ctrl+K — palette toggle (always available)
       if (e.key.toLowerCase() === "k") {
         e.preventDefault();
-        setPaletteOpen(!paletteOpen);
+        setPaletteOpen((open) => !open);
         return;
+      }
       }
 
       // Undo/redo: skip when user is editing text (let native handlers work)
