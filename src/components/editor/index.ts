@@ -7,3 +7,7 @@ export * from "./DraggableCard";
 export * from "./PreviewColumnTab";
 export * from "./MobileOnlyHeader";
 export * from "./CustomBlockModal";
+export * from "./CommandPalette";
+export * from "./HistoryAutosaver";
+export * from "./SaveIndicator";
+export * from "./WorkspaceSwitcher";

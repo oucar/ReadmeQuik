@@ -40,7 +40,9 @@ export function SidebarFilterForm({
     <Stack>
       <Select
         value={blockType}
-        onChange={(value) => handleBlockType(value as any)}
+        onChange={(value) =>
+          handleBlockType(value as ISidebarFilterFormProps["blockType"] | null)
+        }
         label="Active Blocks"
         data={options}
       />

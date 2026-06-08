@@ -4,7 +4,11 @@ import {
   NavbarLogo,
   ThemeSwitcher,
 } from "~/components/common";
-import { ActionButtons } from "~/components/editor";
+import {
+  ActionButtons,
+  SaveIndicator,
+  WorkspaceSwitcher,
+} from "~/components/editor";
 import {
   Header,
   Box,
@@ -12,15 +16,21 @@ import {
   Burger,
   useMantineTheme,
   Group,
+  ActionIcon,
+  Tooltip,
 } from "@mantine/core";
 import { useAtom } from "jotai";
+import { FiRotateCcw, FiRotateCw } from "react-icons/fi";
 import { sidebarDrawerStateAtom } from "~/store";
+import { useDocumentHistory } from "~/hooks";
 
 export interface IEditorNavbarProps {}
 
-export function EditorNavbar(props: IEditorNavbarProps) {
+export function EditorNavbar(_props: IEditorNavbarProps) {
   const theme = useMantineTheme();
   const [isOpened, toggle] = useAtom(sidebarDrawerStateAtom);
+  const { undo, redo, canUndo, canRedo } = useDocumentHistory();
+
   return (
     <Header height={70} p="md">
       <Box sx={{ display: "flex", alignItems: "center", height: "100%" }}>
@@ -37,11 +47,36 @@ export function EditorNavbar(props: IEditorNavbarProps) {
             </MediaQuery>
 
             <NavbarLogo />
+
+            <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
+              <Group spacing="xs" ml="md">
+                <WorkspaceSwitcher />
+                <SaveIndicator />
+              </Group>
+            </MediaQuery>
           </Box>
 
           <Group position="center" spacing="sm">
             <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-              <Group>
+              <Group spacing="xs">
+                <Tooltip label="Undo (Ctrl/Cmd+Z)" withArrow>
+                  <ActionIcon
+                    variant="light"
+                    onClick={undo}
+                    disabled={!canUndo}
+                    aria-label="Undo"
+                  >
+                    <FiRotateCcw size={15} aria-hidden />
+                  </ActionIcon>
+                </Tooltip>
+                <Tooltip label="Redo (Ctrl/Cmd+Shift+Z)" withArrow>
+                    onClick={redo}
+                    disabled={!canRedo}
+                    aria-label="Redo"
+                  >
+                    <FiRotateCw size={15} aria-hidden />
+                  </ActionIcon>
+                </Tooltip>
                 <ActionButtons />
               </Group>
             </MediaQuery>
