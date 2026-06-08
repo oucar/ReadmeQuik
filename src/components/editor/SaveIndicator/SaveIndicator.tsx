@@ -2,7 +2,7 @@ import * as React from "react";
 import { useAtomValue } from "jotai";
 import { Group, Loader, Text } from "@mantine/core";
 import { FiCheck } from "react-icons/fi";
-import { lastSavedAtAtom, saveStatusAtom } from "~/store";
+import { lastSavedAtAtom, saveStatusAtom } from "~/store/history";
 
 function formatTime(ts: number): string {
   const d = new Date(ts);

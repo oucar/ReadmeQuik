@@ -27,10 +27,8 @@ import { useAtomCallback, useUpdateAtom } from "jotai/utils";
 import { useCallback } from "react";
 import {
   activeBlocksAtom,
-  commandPaletteStateAtom,
-  redoAtom,
-  undoAtom,
 } from "~/store";
+import { commandPaletteStateAtom, redoAtom, undoAtom } from "~/store/history";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
 

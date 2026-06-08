@@ -10,7 +10,7 @@ import {
   TextInput,
 } from "@mantine/core";
 import { FiCheck, FiChevronDown, FiEdit2, FiPlus, FiTrash2 } from "react-icons/fi";
-import { currentWorkspaceIdAtom, workspacesAtom } from "~/store";
+import { currentWorkspaceIdAtom, workspacesAtom } from "~/store/history";
 import {
   deleteWorkspaceSnapshot,
   readWorkspaceSnapshot,

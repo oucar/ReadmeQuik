@@ -21,11 +21,11 @@ import {
 import {
   activeBlocksAtom,
   allBlocks,
-  commandPaletteStateAtom,
   inActiveBlocksAtom,
   makeBlockActiveAtom,
   removeBlockAtom,
 } from "~/store";
+import { commandPaletteStateAtom } from "~/store/history";
 import { useDocumentHistory } from "~/hooks";
 
 type Item =

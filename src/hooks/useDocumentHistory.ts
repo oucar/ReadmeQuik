@@ -14,7 +14,7 @@ import {
   skipNextCommitAtom,
   undoAtom,
   WORKSPACE_SNAPSHOT_KEY_PREFIX,
-} from "~/store";
+} from "~/store/history";
 import { DocumentSnapshot, snapshotsEqual } from "~/utils";
 
 const COMMIT_DEBOUNCE_MS = 500;
