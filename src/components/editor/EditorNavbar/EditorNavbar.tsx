@@ -59,7 +59,7 @@ export function EditorNavbar(_props: IEditorNavbarProps) {
           <Group position="center" spacing="sm">
             <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
               <Group spacing="xs">
-                <Tooltip label="Undo (Ctrl+Z)" withArrow>
+                <Tooltip label="Undo (Ctrl/Cmd+Z)" withArrow>
                   <ActionIcon
                     variant="light"
                     onClick={undo}
@@ -69,9 +69,7 @@ export function EditorNavbar(_props: IEditorNavbarProps) {
                     <FiRotateCcw size={15} aria-hidden />
                   </ActionIcon>
                 </Tooltip>
-                <Tooltip label="Redo (Ctrl+Shift+Z)" withArrow>
-                  <ActionIcon
-                    variant="light"
+                <Tooltip label="Redo (Ctrl/Cmd+Shift+Z)" withArrow>
                     onClick={redo}
                     disabled={!canRedo}
                     aria-label="Redo"
