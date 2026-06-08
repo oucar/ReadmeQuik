@@ -152,6 +152,7 @@ export const persistNowAtom = atom(null, (get, set) => {
       JSON.stringify(snapshot)
     );
   } catch {
+    set(saveStatusAtom, "idle");
     return;
   }
   const now = Date.now();
