@@ -1,6 +1,11 @@
 import * as React from "react";
 import type { NextPage } from "next";
-import { MobileOnlyHeader, PreviewColumnTab } from "~/components/editor";
+import {
+  CommandPalette,
+  HistoryAutosaver,
+  MobileOnlyHeader,
+  PreviewColumnTab,
+} from "~/components/editor";
 import { EditorLayout } from "~/components/layouts";
 import {
   closestCenter,
@@ -17,11 +22,56 @@ import {
   restrictToWindowEdges,
 } from "@dnd-kit/modifiers";
 import { sortableKeyboardCoordinates, arrayMove } from "@dnd-kit/sortable";
+import { useAtom } from "jotai";
 import { useAtomCallback, useUpdateAtom } from "jotai/utils";
 import { useCallback } from "react";
-import { activeBlocksAtom } from "~/store";
+import {
+  activeBlocksAtom,
+  commandPaletteStateAtom,
+  redoAtom,
+  undoAtom,
+} from "~/store";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
+
+function useEditorShortcuts() {
+  const [paletteOpen, setPaletteOpen] = useAtom(commandPaletteStateAtom);
+  const undo = useUpdateAtom(undoAtom);
+  const redo = useUpdateAtom(redoAtom);
+
+  React.useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const meta = e.ctrlKey || e.metaKey;
+      if (!meta) return;
+      const target = e.target as HTMLElement | null;
+      const isEditableTarget =
+        target?.tagName === "INPUT" ||
+        target?.tagName === "TEXTAREA" ||
+        target?.isContentEditable === true;
+
+      // Cmd/Ctrl+K — palette toggle (always available)
+      if (e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setPaletteOpen(!paletteOpen);
+        return;
+      }
+
+      // Undo/redo: skip when user is editing text (let native handlers work)
+      if (isEditableTarget) return;
+
+      const key = e.key.toLowerCase();
+      if (key === "z" && !e.shiftKey) {
+        e.preventDefault();
+        undo();
+      } else if ((key === "z" && e.shiftKey) || key === "y") {
+        e.preventDefault();
+        redo();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [paletteOpen, redo, setPaletteOpen, undo]);
+}
 
 const Editor: NextPage = () => {
   const moveBlocks = useUpdateAtom(activeBlocksAtom);
@@ -31,6 +81,8 @@ const Editor: NextPage = () => {
       return ids;
     }, [])
   );
+
+  useEditorShortcuts();
 
   const sensors = useSensors(
     useSensor(MouseSensor),
@@ -62,10 +114,12 @@ const Editor: NextPage = () => {
       onDragEnd={handleDragEnd}
       modifiers={[restrictToVerticalAxis, restrictToWindowEdges]}
     >
+      <HistoryAutosaver />
       <EditorLayout>
         <MobileOnlyHeader />
         <PreviewColumnTab />
       </EditorLayout>
+      <CommandPalette />
     </DndContext>
   );
 };

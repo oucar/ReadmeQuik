@@ -48,7 +48,7 @@ export function SingleItemContentModal({ id }: ISingleItemContentModalProps) {
 
   const setOptionsValue = useUpdateAtom(updateOptionsValueAtom);
 
-  const form = useForm({
+  const form = useForm<Record<string, string | boolean>>({
     initialValues: {},
   });
 
@@ -74,17 +74,17 @@ export function SingleItemContentModal({ id }: ISingleItemContentModalProps) {
           id={name}
           key={name}
           data={selectData}
-          {...form.getInputProps(name as any)}
+          {...form.getInputProps(name)}
         />
       );
     }
     if (type === Options.CheckBox) {
       data.push(
         <Checkbox
-          defaultValue={value as any}
+          defaultChecked={value as boolean}
           key={name}
           label={label}
-          {...form.getInputProps(name as any, { type: "checkbox" })}
+          {...form.getInputProps(name, { type: "checkbox" })}
         />
       );
     }
@@ -96,9 +96,8 @@ export function SingleItemContentModal({ id }: ISingleItemContentModalProps) {
             defaultValue={value as string}
             label={label}
             id={name}
-            type={option.textType as any}
             key={name}
-            {...form.getInputProps(name as any)}
+            {...form.getInputProps(name)}
           />
         );
       } else {
@@ -107,9 +106,9 @@ export function SingleItemContentModal({ id }: ISingleItemContentModalProps) {
             defaultValue={value as string}
             label={label}
             id={name}
-            type={option.textType as any}
+            type={option.textType}
             key={name}
-            {...form.getInputProps(name as any)}
+            {...form.getInputProps(name)}
           />
         );
       }
